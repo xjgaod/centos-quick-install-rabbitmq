@@ -1,0 +1,1 @@
+# centos-quick-install-rabbitmq
