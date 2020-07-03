@@ -1,0 +1,77 @@
+
+--------------------------------------------------
+                   erlang 安装
+--------------------------------------------------
+
+tar -zxvf  erlang.tar  -C /usr/local/lib
+-----解压 erlang.tar (erlang的make install文件) 到/usr/local/lib-----
+
+export ERLANG_HOME=/usr/local/lib/erlang
+export PATH=$PATH:$ERLANG_HOME/bin
+-----添加 erlang 环境变量-----
+
+
+--------------------------------------------------
+                   rabbitmq安装
+--------------------------------------------------
+
+tar -xvf rabbitmq-server-generic-unix-3.7.15.tar
+-----解压-----
+
+mv rabbitmq_server-3.7.15/ /usr/local/
+mv /usr/local/rabbitmq_server-3.7.15  rabbitmq
+-----移动到/usr/local并重命名-----
+
+echo 'export PATH=$PATH:/usr/local/rabbitmq/sbin' >> /etc/profile
+source /etc/profile
+-----更改环境变量并生效-----
+
+mkdir /etc/rabbitmq
+-----创建目录------
+
+cp rabbitmq.conf  /usr/local/rabbitmq/etc/rabbitmq/
+-----拷贝 rabbitmq.conf 到 /usr/local/rabbitmq/etc/rabbitmq/-----
+
+rabbitmq-plugins enable rabbitmq_management
+-----使能 rabbitmq webui-----
+
+rabbitmq-server -detached
+-----启动 rabbitmq-----
+
+rabbitmq-plugins enable rabbitmq_tracing
+-----启动 rabbitmq 日志-----
+
+rabbitmqctl stop
+-----停止 rabbitmq-----
+
+http://127.0.0.1:15672/
+---rabbitmq web ui 地址---
+
+
+/var/tmp/rabbitmq-tracing ----日志目录
+
+
+
+
+ <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
+
+
+
+
+
+
+
+
+
+https://www.cnblogs.com/fengyumeng/p/11133924.html
+https://blog.csdn.net/weixin_41004350/article/details/83046842
+https://my.oschina.net/zhenggao/blog/3104375
+https://www.cnblogs.com/aaronRhythm/p/11098250.html
+https://www.cnblogs.com/dreamvibe/p/9573381.html
+https://www.jianshu.com/p/c773d07a5308
+http://rabbitmq.mr-ping.com/AMQP/amqp-0-9-1-quickref.html
